@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Would RM3,000 Extra Change For You? | 50X</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8D48B;
+  --gold-dark: #9A7B2E;
+  --bg: #0A0A0F;
+  --bg-card: #111118;
+  --text: #F0EDE6;
+  --text-dim: #8A8780;
+  --red: #C4382A;
+  --green: #2AAF5F;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 36px;
+  animation: fadeUp 0.8s ease;
+}
+
+.brand-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  border: 1px solid var(--gold-dark);
+  padding: 5px 18px;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+.header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.header h1 .gold { color: var(--gold); }
+
+.header .subtitle {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* Input Section */
+.input-section {
+  background: var(--bg-card);
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  border-radius: 16px;
+  padding: 28px 24px;
+  margin-bottom: 24px;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group:last-of-type { margin-bottom: 24px; }
+
+.input-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-hint {
+  font-size: 11px;
+  color: rgba(201, 168, 76, 0.5);
+  font-weight: 400;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-prefix {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+  width: 30px;
+}
+
+.field-input {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+.field-input:focus {
+  border-color: var(--gold);
+}
+
+.field-input::placeholder {
+  color: rgba(240, 237, 230, 0.15);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.field-input.salary-main {
+  font-size: 24px;
+  font-weight: 700;
+  padding: 14px 16px;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(201, 168, 76, 0.1);
+  margin: 24px 0;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.total-label {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.total-value {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.total-value.negative { color: var(--red); }
+.total-value.positive { color: var(--green); }
+.total-value.gold { color: var(--gold); }
+
+.live-remaining {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(196, 56, 42, 0.08);
+  border: 1px solid rgba(196, 56, 42, 0.2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
+
+.live-remaining.positive-bg {
+  background: rgba(42, 175, 95, 0.08);
+  border-color: rgba(42, 175, 95, 0.2);
+}
+
+.live-remaining-label {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.live-remaining-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--red);
+}
+
+.live-remaining-value.positive { color: var(--green); }
+
+.calc-btn {
+  display: block;
+  width: 100%;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calc-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.25);
+}
+
+.calc-btn:active { transform: scale(0.98); }
+
+/* Results */
+.results {
+  display: none;
+  animation: fadeUp 0.6s ease;
+}
+
+.results.active { display: block; }
+
+.comparison-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.comparison-header {
+  padding: 20px 24px 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.comparison-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.comparison-row:last-child { padding-bottom: 20px; }
+
+.comp-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-weight: 400;
+  max-width: 55%;
+}
+
+.comp-value {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.comp-value.negative { color: var(--red); }
+.comp-value.positive { color: var(--green); }
+.comp-value.gold { color: var(--gold); }
+.comp-value.neutral { color: var(--text); }
+
+/* Highlight Card */
+.highlight-card {
+  background: var(--bg-card);
+  border: 2px solid var(--gold-dark);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.highlight-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.highlight-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.highlight-sub {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* Bar Chart */
+.bar-section {
+  background: var(--bg-card);
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.bar-section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.bar-group { margin-bottom: 16px; }
+.bar-group:last-child { margin-bottom: 0; }
+
+.bar-label {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bar-track {
+  height: 24px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 1.2s ease;
+  width: 0;
+}
+
+.bar-fill.without { background: var(--red); opacity: 0.7; }
+.bar-fill.with { background: var(--green); opacity: 0.8; }
+
+/* Truth */
+.truth-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.truth-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+
+.truth-card p:last-child { margin-bottom: 0; }
+.truth-card .emphasis { color: var(--text); font-weight: 600; }
+.truth-card .gold-text { color: var(--gold); font-weight: 600; }
+
+/* CTA */
+.cta-section { text-align: center; margin-top: 32px; }
+
+.cta-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.cta-sublabel {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 16px 48px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.25);
+}
+
+.cta-note {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 14px;
+  letter-spacing: 1px;
+}
+
+.restart-btn {
+  display: inline-block;
+  background: none;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  color: var(--text-dim);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: all 0.3s ease;
+}
+
+.restart-btn:hover {
+  border-color: var(--gold-dark);
+  color: var(--gold);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="brand-tag">50X</div>
+    <h1>What Would <span class="gold">RM3,000</span> Extra Do For Your Life?</h1>
+    <p class="subtitle">Enter YOUR real numbers. See YOUR truth. No opinions — just your math.</p>
+  </div>
+
+  <!-- Input -->
+  <div class="input-section">
+
+    <div class="section-title">Your Income</div>
+    <div class="input-group">
+      <div class="input-label">Monthly salary</div>
+      <div class="input-row">
+        <span class="input-prefix">RM</span>
+        <input type="number" class="field-input salary-main" id="salary" placeholder="5,000" oninput="updateLive()">
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title">Your Monthly Expenses</div>
+
+    <div class="input-group">
+      <div class="input-label">
+        Rent / mortgage
+        <span class="input-hint">housing loan</span>
+      </div>
+      <div class="input-row">
+        <span class="input-prefix">RM</span>
+        <input type="number" class="field-input" id="exp-rent" placeholder="1,200" oninput="updateLive()">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-label">
+        Car loan + petrol + insurance
+        <span class="input-hint">transport</span>
+      </div>
+      <div class="input-row">
+        <span class="input-prefix">RM</span>
+        <input type="number" class="field-input" id="exp-car" placeholder="800" oninput="updateLive()">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-label">
+        Food + groceries
+        <span class="input-hint">daily meals</span>
+      </div>
+      <div class="input-row">
+        <span class="input-prefix">RM</span>
+        <input type="number" class="field-input" id="exp-food" placeholder="1,000" oninput="updateLive()">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-label">
+        Bills + utilities + phone
+        <span class="input-hint">electric, water, wifi</span>
+      </div>
+      <div class="input-row">
+        <span class="input-prefix">RM</span>
+        <input type="number" class="field-input" id="exp-bills" placeholder="500" oninput="updateLive()">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-label">
+        Kids (milk, school, tuition, diapers)
+        <span class="input-hint">children</span>
+      </div>
+      <div class="input-row">
+        <span class="input-prefix">RM</span>
+        <input type="number" class="field-input" id="exp-kids" placeholder="500" oninput="updateLive()">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-label">
+        Everything else
+        <span class="input-hint">insurance, parents, misc</span>
+      </div>
+      <div class="input-row">
+        <span class="input-prefix">RM</span>
+        <input type="number" class="field-input" id="exp-other" placeholder="300" oninput="updateLive()">
+      </div>
+    </div>
+
+    <!-- Live remaining -->
+    <div class="live-remaining" id="live-box">
+      <span class="live-remaining-label">What's left each month</span>
+      <span class="live-remaining-value" id="live-value">RM —</span>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">SHOW ME MY 10-YEAR TRUTH</button>
+  </div>
+
+  <!-- Results -->
+  <div class="results" id="results">
+
+    <div class="comparison-card">
+      <div class="comparison-header">Your 10-Year Reality</div>
+      <div class="comparison-row">
+        <span class="comp-label">Your monthly salary</span>
+        <span class="comp-value neutral" id="r-salary">—</span>
+      </div>
+      <div class="comparison-row">
+        <span class="comp-label">Your monthly expenses</span>
+        <span class="comp-value negative" id="r-expenses">—</span>
+      </div>
+      <div class="comparison-row">
+        <span class="comp-label">Left over each month</span>
+        <span class="comp-value" id="r-monthly-left">—</span>
+      </div>
+      <div class="comparison-row">
+        <span class="comp-label">Saved in 10 years (without side income)</span>
+        <span class="comp-value negative" id="r-10yr-without">—</span>
+      </div>
+      <div class="comparison-row">
+        <span class="comp-label">Saved in 10 years (WITH RM3K extra)</span>
+        <span class="comp-value positive" id="r-10yr-with">—</span>
+      </div>
+    </div>
+
+    <!-- Highlight -->
+    <div class="highlight-card">
+      <div class="highlight-label">THE DIFFERENCE</div>
+      <div class="highlight-number" id="r-difference">—</div>
+      <div class="highlight-sub">extra over 10 years — just from RM3,000/month side income</div>
+    </div>
+
+    <!-- Bar Chart -->
+    <div class="bar-section">
+      <div class="bar-section-title">Your 10-Year Savings</div>
+      <div class="bar-group">
+        <div class="bar-label">
+          <span>Without side income</span>
+          <span id="bar-without-label">—</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill without" id="bar-without"></div>
+        </div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">
+          <span>With RM3K/month extra</span>
+          <span id="bar-with-label">—</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill with" id="bar-with"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly breakdown -->
+    <div class="comparison-card">
+      <div class="comparison-header">What RM3,000 Extra Buys You Monthly</div>
+      <div class="comparison-row">
+        <span class="comp-label">Better school / tuition for your kids</span>
+        <span class="comp-value gold">RM 1,200</span>
+      </div>
+      <div class="comparison-row">
+        <span class="comp-label">Family weekends (makan, jalan-jalan)</span>
+        <span class="comp-value gold">RM 600</span>
+      </div>
+      <div class="comparison-row">
+        <span class="comp-label">Emergency fund (grows every month)</span>
+        <span class="comp-value gold">RM 1,200</span>
+      </div>
+      <div class="comparison-row">
+        <span class="comp-label">The feeling of breathing room</span>
+        <span class="comp-value gold">Priceless</span>
+      </div>
+    </div>
+
+    <!-- Truth -->
+    <div class="truth-card">
+      <p><span class="emphasis">These are your numbers. Not mine.</span></p>
+      <p>You entered your own salary. Your own rent. Your own car payment. Your own bills. Your own kids' costs.</p>
+      <p>The math didn't come from a motivational speaker. <span class="emphasis">It came from your life.</span></p>
+      <p>And the truth is simple: if your income stays the same, and your costs keep climbing, the gap gets worse every year.</p>
+      <p><span class="gold-text">RM3,000/month side income in 90 days. That's the first step to changing this equation.</span></p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <div class="cta-label">Ready to change your equation?</div>
+      <div class="cta-sublabel">50 men. One system. 90 days.</div>
+      <a href="https://ig.me/m/giaphoegoh" class="cta-btn" target="_blank">DM "ELITE"</a>
+      <div class="cta-note">50X · To The Top. Together.</div>
+      <button class="restart-btn" onclick="reset()">Try Different Numbers</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function formatRM(n) {
+  const prefix = n < 0 ? '-RM ' : 'RM ';
+  return prefix + Math.abs(Math.round(n)).toLocaleString();
+}
+
+function getVal(id) {
+  return parseFloat(document.getElementById(id).value) || 0;
+}
+
+function updateLive() {
+  const salary = getVal('salary');
+  const expenses = getVal('exp-rent') + getVal('exp-car') + getVal('exp-food') + getVal('exp-bills') + getVal('exp-kids') + getVal('exp-other');
+  const remaining = salary - expenses;
+
+  const liveValue = document.getElementById('live-value');
+  const liveBox = document.getElementById('live-box');
+
+  if (salary === 0 && expenses === 0) {
+    liveValue.textContent = 'RM —';
+    liveValue.className = 'live-remaining-value';
+    liveBox.className = 'live-remaining';
+    return;
+  }
+
+  liveValue.textContent = formatRM(remaining);
+
+  if (remaining >= 0) {
+    liveValue.className = 'live-remaining-value positive';
+    liveBox.className = 'live-remaining positive-bg';
+  } else {
+    liveValue.className = 'live-remaining-value';
+    liveBox.className = 'live-remaining';
+  }
+}
+
+function calculate() {
+  const salary = getVal('salary');
+  if (salary < 500) {
+    document.getElementById('salary').style.borderColor = '#C4382A';
+    return;
+  }
+  document.getElementById('salary').style.borderColor = '';
+
+  const expenses = getVal('exp-rent') + getVal('exp-car') + getVal('exp-food') + getVal('exp-bills') + getVal('exp-kids') + getVal('exp-other');
+  const monthlyLeft = salary - expenses;
+  const sideIncome = 3000;
+  const months = 120;
+
+  const tenYrWithout = monthlyLeft * months;
+  const tenYrWith = (monthlyLeft + sideIncome) * months;
+  const difference = sideIncome * months;
+
+  document.getElementById('r-salary').textContent = formatRM(salary) + '/mo';
+  document.getElementById('r-expenses').textContent = '-' + formatRM(expenses) + '/mo';
+
+  const monthlyLeftEl = document.getElementById('r-monthly-left');
+  monthlyLeftEl.textContent = formatRM(monthlyLeft) + '/mo';
+  monthlyLeftEl.className = 'comp-value ' + (monthlyLeft >= 0 ? 'positive' : 'negative');
+
+  const withoutEl = document.getElementById('r-10yr-without');
+  withoutEl.textContent = formatRM(tenYrWithout);
+  withoutEl.className = 'comp-value ' + (tenYrWithout >= 0 ? 'neutral' : 'negative');
+
+  document.getElementById('r-10yr-with').textContent = formatRM(tenYrWith);
+  document.getElementById('r-difference').textContent = formatRM(difference);
+
+  // Bars
+  const maxVal = Math.max(tenYrWith, 1);
+  const withoutPct = Math.max(3, Math.min(100, (Math.max(tenYrWithout, 0) / maxVal) * 100));
+
+  document.getElementById('bar-without-label').textContent = formatRM(tenYrWithout);
+  document.getElementById('bar-with-label').textContent = formatRM(tenYrWith);
+
+  const results = document.getElementById('results');
+  results.classList.add('active');
+
+  setTimeout(() => {
+    document.getElementById('bar-without').style.width = withoutPct + '%';
+    document.getElementById('bar-with').style.width = '100%';
+  }, 400);
+
+  results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function reset() {
+  document.getElementById('results').classList.remove('active');
+  document.querySelectorAll('.field-input').forEach(el => el.value = '');
+  document.getElementById('bar-without').style.width = '0%';
+  document.getElementById('bar-with').style.width = '0%';
+  document.getElementById('live-value').textContent = 'RM —';
+  document.getElementById('live-value').className = 'live-remaining-value';
+  document.getElementById('live-box').className = 'live-remaining';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
